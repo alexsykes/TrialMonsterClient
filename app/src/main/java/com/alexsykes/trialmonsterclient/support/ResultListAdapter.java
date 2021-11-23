@@ -9,6 +9,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.alexsykes.trialmonsterclient.R;
@@ -67,8 +68,8 @@ public class ResultListAdapter extends RecyclerView.Adapter<ResultListAdapter.Re
         });
         //
 
-        int backgroundColor = Color.parseColor("#40bdc0d4");
-        int white = Color.parseColor("#ffffff");
+        int backgroundColor = ContextCompat.getColor(resultViewHolder.itemView.getContext(), R.color.offWhite);
+        int white = ContextCompat.getColor(resultViewHolder.itemView.getContext(), R.color.colorWhite);
 
         // Insert * character after each section
         // Create sectionsScore data string

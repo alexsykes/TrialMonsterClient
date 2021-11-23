@@ -10,6 +10,7 @@ import com.alexsykes.trialmonsterclient.R;
 import com.alexsykes.trialmonsterclient.activities.MainActivity;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.text.ParseException;
@@ -55,9 +56,6 @@ public class TrialListAdapter extends RecyclerView.Adapter<TrialListAdapter.Tria
         // Populate TextViews with data
         theTrial = theTrialList.get(i);
 
-        int backgroundColor = Color.parseColor("#40bdc0d4");
-        int white = Color.parseColor("#ffffff");
-
         String theDate = theTrial.get("date".toString());
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         Date sourceDate = null;
@@ -67,7 +65,9 @@ public class TrialListAdapter extends RecyclerView.Adapter<TrialListAdapter.Tria
             e.printStackTrace();
         }
 
-        SimpleDateFormat targetFormat = new SimpleDateFormat("MMM d, YYYY");
+        int backgroundColor = ContextCompat.getColor(trialViewHolder.itemView.getContext(), R.color.offWhite);
+        int white = ContextCompat.getColor(trialViewHolder.itemView.getContext(), R.color.colorWhite);
+        SimpleDateFormat targetFormat = new SimpleDateFormat("MMM d, yyyy");
         theDate = targetFormat.format(sourceDate);
 
         trialViewHolder.nameTextView.setText(theTrial.get("name".toString()));
@@ -77,9 +77,9 @@ public class TrialListAdapter extends RecyclerView.Adapter<TrialListAdapter.Tria
         trialViewHolder.bind(theTrial, listener);
 
         if (i % 2 != 0) {
-           // trialViewHolder.itemView.setBackgroundColor(backgroundColor);
+            trialViewHolder.itemView.setBackgroundColor(backgroundColor);
         } else {
-           // trialViewHolder.itemView.setBackgroundColor(white);
+            trialViewHolder.itemView.setBackgroundColor(white);
         }
     }
 
