@@ -3,4 +3,5 @@
     <string name="club_name">Club</string>
     <string name="trial_name">Trial name</string>
     <string name="venue_name">Venue</string>
+    <string name="event_date">Date</string>
 </resources>
