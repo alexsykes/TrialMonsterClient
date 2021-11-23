@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
 
         setupUI();
         llm = new LinearLayoutManager(this);
-        getDataset(BASE_URL + "getResultList.php");
+        getDataset(BASE_URL + "getAndroidPastTrials.php");
     }
 
     private void setupUI() {

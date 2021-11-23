@@ -8,6 +8,7 @@ import android.content.pm.ActivityInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
 
 import com.alexsykes.trialmonsterclient.R;
 import com.alexsykes.trialmonsterclient.support.ResultListAdapter;
@@ -38,6 +39,7 @@ public class ResultListActivity extends AppCompatActivity {
 
     RecyclerView rv;
     LinearLayoutManager llm;
+    TextView clubTextView, trialDetailTextView, row2TextView, message;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,7 +48,7 @@ public class ResultListActivity extends AppCompatActivity {
         this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
 
         trialid = getIntent().getExtras().getString("trialid");
-        getJSONDataset(BASE_URL + "getJSONData.php?id=" + trialid);
+        getJSONDataset(BASE_URL + "getTrialResultJSONdata.php?id=" + trialid);
     }
 
     private void getJSONDataset(final String urlWebService) {
@@ -90,6 +92,9 @@ public class ResultListActivity extends AppCompatActivity {
                     // JSONArray courseCount = jsonArray.getJSONObject(1).getJSONArray("entry count");
                     String results = jsonArray.getJSONObject(2).getJSONArray("results").toString();
                     theResults = getResultList(results);
+
+                    String nonStarters = jsonArray.getJSONObject(3).getJSONArray("nonstarters").toString();
+
                     rv = findViewById(R.id.rv);
 
 
@@ -104,32 +109,16 @@ public class ResultListActivity extends AppCompatActivity {
             }
 
             private void displayTrialDetails(JSONObject trialDetails) throws JSONException {
-//                trialDetailTextView = findViewById(R.id.trialDetailTextView);
-//                clubTextView = findViewById(R.id.clubTextView);
-//                row2TextView = findViewById(R.id.row2TextView);
-//
-//                clubTextView.setText(trialDetails.getString("club"));
-//                trialDetailTextView.setText(trialDetails.getString("eventname"));
-//                String location = trialDetails.getString("location");
+                String location = trialDetails.getString("location");
 
+                // Get numsections and numlaps from trialDetails
                 numlaps = trialDetails.getInt("numlaps");
                 numsections = trialDetails.getInt("numsections");
 
-                String theDate = trialDetails.getString("date");
-                SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-                Date sourceDate = null;
-                try {
-                    sourceDate = dateFormat.parse(theDate);
-                } catch (ParseException e) {
-                    e.printStackTrace();
-                }
-
-                SimpleDateFormat targetFormat = new SimpleDateFormat("MMM d, YYYY");
-                theDate = targetFormat.format(sourceDate);
-            //    row2TextView.setText(theDate + " - " + location);
-
-
-                getSupportActionBar().setTitle(trialDetails.getString("eventname"));
+                // Display title data in ActionBar
+                String club = trialDetails.getString("club");
+                String title = club + " - " + trialDetails.getString("eventname") + " - " + location;
+                getSupportActionBar().setTitle(title);
             }
 
             //in this method we are fetching the json string
