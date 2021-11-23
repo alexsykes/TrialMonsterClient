@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.pm.ActivityInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
@@ -32,14 +33,11 @@ public class ResultListActivity extends AppCompatActivity {
     private static final String BASE_URL = "https://android.trialmonster.uk/";
 
     private String trialid;
-    public static int numlaps;
-    private static int numsections;
-    ArrayList<HashMap<String, String>> theTrialDetail;
+    public static int numlaps, numsections;
     ArrayList<HashMap<String, String>> theResults;
 
     RecyclerView rv;
     LinearLayoutManager llm;
-    TextView clubTextView, trialDetailTextView, row2TextView, message;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -93,7 +91,7 @@ public class ResultListActivity extends AppCompatActivity {
                     String results = jsonArray.getJSONObject(2).getJSONArray("results").toString();
                     theResults = getResultList(results);
 
-                    String nonStarters = jsonArray.getJSONObject(3).getJSONArray("nonstarters").toString();
+                   // JSONArray nonStarters = jsonArray.getJSONObject(3).getJSONArray("nonstarters");
 
                     rv = findViewById(R.id.rv);
 
@@ -170,11 +168,12 @@ public class ResultListActivity extends AppCompatActivity {
         theResults = new ArrayList<>();
         JSONArray jsonArray = new JSONArray(json);
         String gone = Integer.toString(View.GONE);
-
+    String name;
         for (int index = 0; index < jsonArray.length(); index++) {
             // Create new HashMap
             HashMap<String, String> theResultHash = new HashMap<>();
-
+    name = jsonArray.getJSONObject(index).getString("name");
+            Log.i("Name", "getResultList: " + name);
             // ut data from JSON
             theResultHash.put("rider", jsonArray.getJSONObject(index).getString("rider"));
             theResultHash.put("name", jsonArray.getJSONObject(index).getString("name"));
@@ -190,6 +189,7 @@ public class ResultListActivity extends AppCompatActivity {
             theResultHash.put("missed", jsonArray.getJSONObject(index).getString("missed"));
             theResultHash.put("sectionscores", jsonArray.getJSONObject(index).getString("sectionscores"));
             theResultHash.put("scores", jsonArray.getJSONObject(index).getString("scores"));
+            theResultHash.put("dnf", jsonArray.getJSONObject(index).getString("dnf"));
             theResultHash.put("position", "");
             theResultHash.put("index", String.valueOf(index));
             theResultHash.put("visibility", gone);

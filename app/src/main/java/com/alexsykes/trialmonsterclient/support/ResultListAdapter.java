@@ -49,9 +49,6 @@ public class ResultListAdapter extends RecyclerView.Adapter<ResultListAdapter.Re
 
         // Pass index value to listener method
         resultViewHolder.itemView.setTag(i);
-
-        //
-
         resultViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -68,7 +65,6 @@ public class ResultListAdapter extends RecyclerView.Adapter<ResultListAdapter.Re
                 theResultList.get(pointer).put("visibility", Integer.toString(newVisibility));
             }
         });
-
         //
 
         int backgroundColor = Color.parseColor("#40bdc0d4");
@@ -126,12 +122,11 @@ public class ResultListAdapter extends RecyclerView.Adapter<ResultListAdapter.Re
         resultViewHolder.classTextView.setText(theClass);
         resultViewHolder.scoresTextView.setText(theSections);
 
-
         // Check for missed sections
-        // Display position if 0
+        // Display position if dnf = 0
         resultViewHolder.courseTextView.setText(theResult.get("course"));
 
-        if (Integer.parseInt(theResult.get("missed")) != 0) {
+        if (theResult.get("dnf").equals('1')) {
             resultViewHolder.positionTextView.setText("");
         }
 
