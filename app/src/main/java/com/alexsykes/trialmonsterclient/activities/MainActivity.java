@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -67,10 +68,6 @@ public class MainActivity extends AppCompatActivity {
          * */
         class GetResults extends AsyncTask<Void, Void, String> {
 
-            //this method will be called before execution
-            //you can display a progress bar or something
-            //so that user can understand that he should wait
-            //as network operation may take some time
             @Override
             protected void onPreExecute() {
                 super.onPreExecute();
@@ -81,13 +78,7 @@ public class MainActivity extends AppCompatActivity {
                 super.onPostExecute(s);
                 try {
                     //loadIntoListView(s);
-
-                    Log.i(TAG, "onPostExecute: " + s);
                     theTrialList = getTrialList(s);
-
-                    /*
-                        Section dealing with RecyclerView starts here
-                     */
 
                     rv = findViewById(R.id.trialListRV);
                     rv.setLayoutManager(llm);
@@ -109,8 +100,6 @@ public class MainActivity extends AppCompatActivity {
 
                     //Opening the URL using HttpURLConnection
                     HttpURLConnection con = (HttpURLConnection) url.openConnection();
-                    InputStream in = new BufferedInputStream(con.getInputStream());
-                    // readStream(in);
 
                     //StringBuilder object to read the string from the service
                     StringBuilder sb = new StringBuilder();
@@ -132,9 +121,9 @@ public class MainActivity extends AppCompatActivity {
                     return sb.toString().trim();
                 } catch (Exception e) {
                     String error = e.getLocalizedMessage();
+                    Log.e(e.getLocalizedMessage(), "doInBackground: " + error);
                     return null;
                 }
-
             }
         }
 
@@ -167,5 +156,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onClickCalled(String id) {
+        Intent intent = new Intent(this, ResultListActivity.class);
+        intent.putExtra("trialid", id);
+        startActivity(intent);
     }
 }

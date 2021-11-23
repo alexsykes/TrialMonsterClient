@@ -77,9 +77,9 @@ public class TrialListAdapter extends RecyclerView.Adapter<TrialListAdapter.Tria
         trialViewHolder.bind(theTrial, listener);
 
         if (i % 2 != 0) {
-            trialViewHolder.itemView.setBackgroundColor(backgroundColor);
+           // trialViewHolder.itemView.setBackgroundColor(backgroundColor);
         } else {
-            trialViewHolder.itemView.setBackgroundColor(white);
+           // trialViewHolder.itemView.setBackgroundColor(white);
         }
     }
 

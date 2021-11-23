@@ -1,7 +1,17 @@
 <resources>
-    <string name="app_name">TrialMonsterClient</string>
+    <string name="app_name">TrialMonster Results</string>
     <string name="club_name">Club</string>
     <string name="trial_name">Trial name</string>
     <string name="venue_name">Venue</string>
     <string name="event_date">Date</string>
+    <string name="rider">Rider</string>
+    <string name="machine">Machine</string>
+    <string name="riderclass">Class</string>
+    <string name="total">Total</string>
+    <string name="cleans">C</string>
+    <string name="_1">1</string>
+    <string name="_2">2</string>
+    <string name="_3">3</string>
+    <string name="_5">5</string>
+    <string name="missed">M</string>
 </resources>
