@@ -221,7 +221,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
             android:gravity="end"
-            android:textColor="@color/design_default_color_on_primary"
+            android:textColor="@color/colorPrimary"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@id/dataRow" />
@@ -235,7 +235,7 @@
             android:layout_marginEnd="8dp"
             android:layout_marginBottom="4dp"
             android:gravity="end"
-            android:textColor="@color/design_default_color_on_primary"
+            android:textColor="@color/colorPrimary"
             app:layout_constraintBaseline_toBaselineOf="@+id/positionTextView"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/nameTextView"
@@ -247,7 +247,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:textColor="@color/design_default_color_on_primary"
+            android:textColor="@color/colorPrimary"
             app:layout_constraintBaseline_toBaselineOf="@+id/riderTextView"
             app:layout_constraintEnd_toStartOf="@+id/machineTextView"
             app:layout_constraintStart_toEndOf="@+id/riderTextView" />
@@ -256,7 +256,7 @@
             android:id="@+id/machineTextView"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:textColor="@color/design_default_color_on_primary"
+            android:textColor="@color/colorPrimary"
             app:layout_constraintBaseline_toBaselineOf="@+id/nameTextView"
             app:layout_constraintEnd_toStartOf="@+id/classTextView"
             app:layout_constraintStart_toEndOf="@+id/nameTextView" />
@@ -265,7 +265,7 @@
             android:id="@+id/classTextView"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:textColor="@color/design_default_color_on_primary"
+            android:textColor="@color/colorPrimary"
             app:layout_constraintBaseline_toBaselineOf="@+id/nameTextView"
             app:layout_constraintEnd_toStartOf="@+id/totalTextView"
             app:layout_constraintStart_toEndOf="@+id/machineTextView" />
@@ -277,7 +277,7 @@
             android:layout_marginStart="8dp"
             android:layout_marginEnd="16dp"
             android:gravity="end"
-            android:textColor="@color/design_default_color_on_primary"
+            android:textColor="@color/colorPrimary"
             app:layout_constraintBaseline_toBaselineOf="@+id/nameTextView"
             app:layout_constraintEnd_toStartOf="@+id/cleansTextView"
             app:layout_constraintStart_toEndOf="@+id/classTextView" />
@@ -289,7 +289,7 @@
             android:layout_marginStart="3dp"
             android:layout_marginEnd="3dp"
             android:gravity="end"
-            android:textColor="@color/design_default_color_on_primary"
+            android:textColor="@color/colorPrimary"
             app:layout_constraintBaseline_toBaselineOf="@+id/nameTextView"
             app:layout_constraintEnd_toStartOf="@+id/onesTextView"
             app:layout_constraintStart_toEndOf="@+id/totalTextView" />
@@ -301,7 +301,7 @@
             android:layout_marginStart="3dp"
             android:layout_marginEnd="3dp"
             android:gravity="end"
-            android:textColor="@color/design_default_color_on_primary"
+            android:textColor="@color/colorPrimary"
             app:layout_constraintBaseline_toBaselineOf="@+id/nameTextView"
             app:layout_constraintEnd_toStartOf="@+id/twosTextView"
             app:layout_constraintStart_toEndOf="@+id/cleansTextView" />
@@ -313,7 +313,7 @@
             android:layout_marginStart="3dp"
             android:layout_marginEnd="3dp"
             android:gravity="end"
-            android:textColor="@color/design_default_color_on_primary"
+            android:textColor="@color/colorPrimary"
             app:layout_constraintBaseline_toBaselineOf="@+id/nameTextView"
             app:layout_constraintEnd_toStartOf="@+id/threesTextView"
             app:layout_constraintStart_toEndOf="@+id/onesTextView" />
@@ -325,7 +325,7 @@
             android:layout_marginStart="3dp"
             android:layout_marginEnd="3dp"
             android:gravity="end"
-            android:textColor="@color/design_default_color_on_primary"
+            android:textColor="@color/colorPrimary"
             app:layout_constraintBaseline_toBaselineOf="@+id/nameTextView"
             app:layout_constraintEnd_toEndOf="@+id/fivesTextView"
             app:layout_constraintStart_toEndOf="@+id/twosTextView" />
@@ -337,7 +337,7 @@
             android:layout_marginStart="3dp"
             android:layout_marginEnd="3dp"
             android:gravity="end"
-            android:textColor="@color/design_default_color_on_primary"
+            android:textColor="@color/colorPrimary"
             app:layout_constraintBaseline_toBaselineOf="@+id/nameTextView"
             app:layout_constraintEnd_toStartOf="@id/missedTextView"
             app:layout_constraintStart_toEndOf="@+id/threesTextView" />
@@ -349,7 +349,7 @@
             android:layout_marginStart="3dp"
             android:layout_marginEnd="12dp"
             android:gravity="end"
-            android:textColor="@color/design_default_color_on_primary"
+            android:textColor="@color/colorPrimary"
             app:layout_constraintBaseline_toBaselineOf="@+id/nameTextView"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/fivesTextView" />

@@ -127,7 +127,7 @@ public class ResultListAdapter extends RecyclerView.Adapter<ResultListAdapter.Re
         // Display position if dnf = 0
         resultViewHolder.courseTextView.setText(theResult.get("course"));
 
-        if (theResult.get("dnf").equals('1')) {
+        if (theResult.get("dnf").equals("1")) {
             resultViewHolder.positionTextView.setText("");
         }
 
