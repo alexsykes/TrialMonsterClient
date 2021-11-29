@@ -15,4 +15,6 @@
     <string name="_5">5</string>
     <string name="missed">M</string>
     <string name="message">Loading data…</string>
+    <string name="list_of_trials">The screen displays a list of the trials available for display</string>
+    <string name="list_of_results">This view shows a list of scores for one event</string>
 </resources>
