@@ -1,23 +1,15 @@
-package com.alexsykes.trialmonsterclient.activities;
+package com.alexsykes.trialmonsterclient.viewmodels;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProvider;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
-import android.content.pm.ActivityInfo;
-import android.content.res.Configuration;
 import android.os.AsyncTask;
-import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.TextView;
-import android.widget.Toast;
+
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
+import androidx.lifecycle.ViewModel;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.alexsykes.trialmonsterclient.R;
-import com.alexsykes.trialmonsterclient.support.ResultListAdapter;
-import com.alexsykes.trialmonsterclient.viewmodels.ResultListViewModel;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -27,58 +19,23 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Objects;
 
-public class ResultListActivity extends AppCompatActivity {
+public class ResultListViewModel extends ViewModel {
+    private MutableLiveData<ArrayList<HashMap<String, String>>> theResultList;
     private static final String BASE_URL = "https://android.trialmonster.uk/";
-    private ResultListViewModel model;
-
     private String trialid;
-    public static int numlaps, numsections;
     ArrayList<HashMap<String, String>> theResults;
 
-    RecyclerView rv;
-    LinearLayoutManager llm;
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_result_list);
-        // this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
-
-        trialid = getIntent().getExtras().getString("trialid");
-        model = new ViewModelProvider(this).get(ResultListViewModel.class);
-
-        final Observer<ArrayList<HashMap<String, String>>> resultObserver = new Observer<ArrayList<HashMap<String, String>>>() {
-            @Override
-            public void onChanged(ArrayList<HashMap<String, String>> hashMaps) {
-                Log.i("Info", "model changed");
-            }
-        };
-
-        model.getResults(trialid).observe(this, resultObserver);
-
-     //    getJSONDataset(BASE_URL + "getTrialResultJSONdata.php?id=" + trialid);
-    }
-
-    @Override
-    public void onConfigurationChanged(Configuration newConfig) {
-        super.onConfigurationChanged(newConfig);
-
-        Log.i("info", "onConfigurationChanged: ");
-        // Checks the orientation of the screen
-        if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {
-            Toast.makeText(this, "landscape", Toast.LENGTH_SHORT).show();
-        } else if (newConfig.orientation == Configuration.ORIENTATION_PORTRAIT){
-            Toast.makeText(this, "portrait", Toast.LENGTH_SHORT).show();
+    public LiveData<ArrayList<HashMap<String, String>>> getResults(String trialid) {
+        if (theResultList == null) {
+            theResultList = new MutableLiveData<ArrayList<HashMap<String, String>>>();
+            getJSONDataset(BASE_URL + "getTrialResultJSONdata.php?id=" + trialid);
         }
+        return theResultList;
     }
-
 
     private void getJSONDataset(final String urlWebService) {
         /*
@@ -116,38 +73,17 @@ public class ResultListActivity extends AppCompatActivity {
 
                     JSONArray theTrial = jsonArray.getJSONObject(0).getJSONArray("trial details");
                     JSONObject trialDetails = theTrial.getJSONObject(0);
-                    displayTrialDetails(trialDetails);
+                    //displayTrialDetails(trialDetails);
 
                     // JSONArray courseCount = jsonArray.getJSONObject(1).getJSONArray("entry count");
                     String results = jsonArray.getJSONObject(2).getJSONArray("results").toString();
                     theResults = getResultList(results);
 
-                   // JSONArray nonStarters = jsonArray.getJSONObject(3).getJSONArray("nonstarters");
-
-                    rv = findViewById(R.id.rv);
-
-
-                    llm = new LinearLayoutManager(rv.getContext());
-                    rv.setLayoutManager(llm);
-                    rv.setHasFixedSize(true);
-                    initialiseAdapter();
+                    // JSONArray nonStarters = jsonArray.getJSONObject(3).getJSONArray("nonstarters");
 
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-            }
-
-            private void displayTrialDetails(JSONObject trialDetails) throws JSONException {
-                String location = trialDetails.getString("location");
-
-                // Get numsections and numlaps from trialDetails
-                numlaps = trialDetails.getInt("numlaps");
-                numsections = trialDetails.getInt("numsections");
-
-                // Display title data in ActionBar
-                String club = trialDetails.getString("club");
-                String title = club + " - " + trialDetails.getString("eventname") + " - " + location;
-                getSupportActionBar().setTitle(title);
             }
 
             //in this method we are fetching the json string
@@ -189,21 +125,16 @@ public class ResultListActivity extends AppCompatActivity {
         getJSON.execute();
     }
 
-    private void initialiseAdapter() {
-        ResultListAdapter adapter = new ResultListAdapter(theResults);
-        rv.setAdapter(adapter);
-    }
-
     private ArrayList<HashMap<String, String>> getResultList(String json) throws JSONException {
 
         theResults = new ArrayList<>();
         JSONArray jsonArray = new JSONArray(json);
         String gone = Integer.toString(View.GONE);
-    String name;
+        String name;
         for (int index = 0; index < jsonArray.length(); index++) {
             // Create new HashMap
             HashMap<String, String> theResultHash = new HashMap<>();
-    name = jsonArray.getJSONObject(index).getString("name");
+            name = jsonArray.getJSONObject(index).getString("name");
             Log.i("Name", "getResultList: " + name);
             // ut data from JSON
             theResultHash.put("rider", jsonArray.getJSONObject(index).getString("rider"));
@@ -232,7 +163,6 @@ public class ResultListActivity extends AppCompatActivity {
 
         return theResults;
     }
-
     private ArrayList<HashMap<String, String>> addPosition(ArrayList<HashMap<String, String>> theResults) {
         HashMap<String, String> previous, current;
         String currCourse, prevCourse;

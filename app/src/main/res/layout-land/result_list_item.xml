@@ -56,7 +56,6 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:visibility="gone"
                 android:id="@+id/machineLabelView"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -87,7 +86,6 @@
                 app:layout_constraintStart_toEndOf="@+id/machineLabelView" />
 
             <TextView
-                android:visibility="gone"
                 android:id="@+id/totalLabelView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -104,7 +102,6 @@
                 tools:layout_conversion_absoluteWidth="50dp" />
 
             <TextView
-                android:visibility="gone"
                 android:id="@+id/cleansLabelView"
                 android:layout_width="20dp"
                 android:layout_height="wrap_content"
@@ -123,7 +120,6 @@
 
             <TextView
                 android:id="@+id/onesLabelView"
-                android:visibility="gone"
                 android:layout_width="20dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="3dp"
@@ -139,7 +135,6 @@
 
             <TextView
                 android:id="@+id/twosLabelView"
-                android:visibility="gone"
                 android:layout_width="20dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="3dp"
@@ -155,7 +150,6 @@
 
             <TextView
                 android:id="@+id/threesLabelView"
-                android:visibility="gone"
                 android:layout_width="20dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="3dp"
@@ -171,7 +165,6 @@
 
             <TextView
                 android:id="@+id/fivesLabelView"
-                android:visibility="gone"
                 android:layout_width="20dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="3dp"
@@ -187,7 +180,6 @@
 
             <TextView
                 android:id="@+id/missedLabelView"
-                android:visibility="gone"
                 android:layout_width="20dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
@@ -206,7 +198,6 @@
 
     <TextView
         android:id="@+id/scoresTextView"
-        android:visibility="gone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="96dp"
@@ -287,7 +278,6 @@
 
         <TextView
             android:id="@+id/cleansTextView"
-            android:visibility="gone"
             android:layout_width="20dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="3dp"
@@ -299,7 +289,6 @@
 
         <TextView
             android:id="@+id/onesTextView"
-            android:visibility="gone"
             android:layout_width="20dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="3dp"
@@ -311,7 +300,6 @@
 
         <TextView
             android:id="@+id/twosTextView"
-            android:visibility="gone"
             android:layout_width="20dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="3dp"
@@ -323,7 +311,6 @@
 
         <TextView
             android:id="@+id/threesTextView"
-            android:visibility="gone"
             android:layout_width="20dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="3dp"
@@ -335,7 +322,6 @@
 
         <TextView
             android:id="@+id/fivesTextView"
-            android:visibility="gone"
             android:layout_width="20dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="3dp"
@@ -346,7 +332,6 @@
             app:layout_constraintStart_toEndOf="@+id/threesTextView" />
 
         <TextView
-            android:visibility="gone"
             android:id="@+id/missedTextView"
             android:layout_width="20dp"
             android:layout_height="wrap_content"
