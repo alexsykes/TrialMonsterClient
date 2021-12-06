@@ -1,6 +1,7 @@
 package com.alexsykes.trialmonsterclient.support;
 
 import android.content.Context;
+import android.content.res.Configuration;
 import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,6 +20,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class ResultListAdapter extends RecyclerView.Adapter<ResultListAdapter.ResultViewHolder> {
+    int orientation;
 
     ArrayList<HashMap<String, String>> theResultList;
     HashMap<String, String> theResult;
@@ -38,6 +40,7 @@ public class ResultListAdapter extends RecyclerView.Adapter<ResultListAdapter.Re
     public ResultViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         // Point to data holder layout
         View v = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.result_list_item, viewGroup, false);
+        int orientation = viewGroup.getResources().getConfiguration().orientation;
         ResultViewHolder resultViewHolder = new ResultViewHolder(v);
         return resultViewHolder;
     }
@@ -151,20 +154,25 @@ public class ResultListAdapter extends RecyclerView.Adapter<ResultListAdapter.Re
 
 
         public ResultViewHolder(@NonNull View itemView) {
+
             super(itemView);
+            int orientation = itemView.getResources().getConfiguration().orientation;
             positionTextView = itemView.findViewById(R.id.positionTextView);
             riderTextView = itemView.findViewById(R.id.riderTextView);
             nameTextView = itemView.findViewById(R.id.nameTextView);
             machineTextView = itemView.findViewById(R.id.machineTextView);
             totalTextView = itemView.findViewById(R.id.totalTextView);
-            cleansTextView = itemView.findViewById(R.id.cleansTextView);
-            onesTextView = itemView.findViewById(R.id.onesTextView);
-            twosTextView = itemView.findViewById(R.id.twosTextView);
-            threesTextView = itemView.findViewById(R.id.threesTextView);
-            fivesTextView = itemView.findViewById(R.id.fivesTextView);
-            missedTextView = itemView.findViewById(R.id.missedTextView);
+
+            if(orientation == Configuration.ORIENTATION_LANDSCAPE) {
+                cleansTextView = itemView.findViewById(R.id.cleansTextView);
+                onesTextView = itemView.findViewById(R.id.onesTextView);
+                twosTextView = itemView.findViewById(R.id.twosTextView);
+                threesTextView = itemView.findViewById(R.id.threesTextView);
+                fivesTextView = itemView.findViewById(R.id.fivesTextView);
+                missedTextView = itemView.findViewById(R.id.missedTextView);
+                scoresTextView = itemView.findViewById(R.id.scoresTextView);
+            }
             classTextView = itemView.findViewById(R.id.classTextView);
-            scoresTextView = itemView.findViewById(R.id.scoresTextView);
             courseTextView = itemView.findViewById(R.id.courseTextView);
             topRow = itemView.findViewById(R.id.topRow);
         }

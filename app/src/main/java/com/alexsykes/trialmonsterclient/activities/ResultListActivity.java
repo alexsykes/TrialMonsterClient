@@ -1,18 +1,19 @@
 package com.alexsykes.trialmonsterclient.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.pm.ActivityInfo;
+import android.content.res.Configuration;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.TextView;
 
 import com.alexsykes.trialmonsterclient.R;
 import com.alexsykes.trialmonsterclient.support.ResultListAdapter;
+import com.alexsykes.trialmonsterclient.support.ResultListViewModel;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -22,15 +23,14 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Objects;
 
 public class ResultListActivity extends AppCompatActivity {
     private static final String BASE_URL = "https://android.trialmonster.uk/";
+    public static final String TAG = "Info";
+    ResultListViewModel model;
 
     private String trialid;
     public static int numlaps, numsections;
@@ -38,15 +38,48 @@ public class ResultListActivity extends AppCompatActivity {
 
     RecyclerView rv;
     LinearLayoutManager llm;
+    int orientation;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_result_list);
-        this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+        Log.i(TAG, "onCreate called: ");
+        model = new ViewModelProvider(this).get(ResultListViewModel.class);
 
-        trialid = getIntent().getExtras().getString("trialid");
-        getJSONDataset(BASE_URL + "getTrialResultJSONdata.php?id=" + trialid);
+        // Get data if not already loaded
+        if (model.getTheResults() == null) {
+            trialid = getIntent().getExtras().getString("trialid");
+            model.getData(trialid);
+        }
+
+        // this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+
+//        trialid = getIntent().getExtras().getString("trialid");
+//        getJSONDataset(BASE_URL + "getTrialResultJSONdata.php?id=" + trialid);
+
+      //  orientation = this.getResources().getConfiguration().orientation;
+      /*  if(orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            setupLandscape();
+        } else if (orientation == Configuration.ORIENTATION_PORTRAIT) {
+            setupPortrait();
+        }
+
+       */
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        // Check for orientation
+
+    }
+
+    private void setupPortrait() {
+    }
+
+    private void setupLandscape() {
     }
 
     private void getJSONDataset(final String urlWebService) {
@@ -78,28 +111,31 @@ public class ResultListActivity extends AppCompatActivity {
                 processJSON(s);
             }
 
+            // Set up ArrayLists of trialsDetails, theResults and nonStarters
             private void processJSON(String json) {
                 try {
                     // Parse string data into JSON
                     JSONArray jsonArray = new JSONArray(json);
-
+                    JSONArray nonStarters = jsonArray.getJSONObject(3).getJSONArray("nonstarters");
                     JSONArray theTrial = jsonArray.getJSONObject(0).getJSONArray("trial details");
                     JSONObject trialDetails = theTrial.getJSONObject(0);
-                    displayTrialDetails(trialDetails);
+
+                    model.putTrialsDetails(trialDetails);
+                    model.putNonStarters(nonStarters);
+                    // displayTrialDetails(trialDetails);
 
                     // JSONArray courseCount = jsonArray.getJSONObject(1).getJSONArray("entry count");
                     String results = jsonArray.getJSONObject(2).getJSONArray("results").toString();
                     theResults = getResultList(results);
-
-                   // JSONArray nonStarters = jsonArray.getJSONObject(3).getJSONArray("nonstarters");
-
-                    rv = findViewById(R.id.rv);
-
-
-                    llm = new LinearLayoutManager(rv.getContext());
-                    rv.setLayoutManager(llm);
-                    rv.setHasFixedSize(true);
-                    initialiseAdapter();
+                    model.putResults(theResults);
+                    theResults = model.getTheResults();
+//                    rv = findViewById(R.id.rv);
+//
+//
+//                    llm = new LinearLayoutManager(rv.getContext());
+//                    rv.setLayoutManager(llm);
+//                    rv.setHasFixedSize(true);
+//                    initialiseAdapter();
 
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -172,9 +208,8 @@ public class ResultListActivity extends AppCompatActivity {
         for (int index = 0; index < jsonArray.length(); index++) {
             // Create new HashMap
             HashMap<String, String> theResultHash = new HashMap<>();
-    name = jsonArray.getJSONObject(index).getString("name");
-            Log.i("Name", "getResultList: " + name);
-            // ut data from JSON
+
+            // Put data from JSON
             theResultHash.put("rider", jsonArray.getJSONObject(index).getString("rider"));
             theResultHash.put("name", jsonArray.getJSONObject(index).getString("name"));
             theResultHash.put("machine", jsonArray.getJSONObject(index).getString("machine"));
