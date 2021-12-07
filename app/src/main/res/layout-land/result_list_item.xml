@@ -112,7 +112,6 @@
                 android:textColor="@color/colorOnPrimary"
                 android:textSize="16sp"
                 android:textStyle="bold"
-                android:visibility="gone"
                 app:layout_constraintBaseline_toBaselineOf="@+id/nameLabelView"
                 app:layout_constraintEnd_toStartOf="@+id/onesLabelView"
                 app:layout_constraintStart_toEndOf="@+id/totalLabelView"
@@ -130,7 +129,6 @@
                 android:textColor="@color/colorOnPrimary"
                 android:textSize="16sp"
                 android:textStyle="bold"
-                android:visibility="gone"
                 app:layout_constraintBaseline_toBaselineOf="@+id/nameLabelView"
                 app:layout_constraintEnd_toStartOf="@+id/twosLabelView"
                 app:layout_constraintStart_toEndOf="@+id/cleansLabelView" />
@@ -146,7 +144,6 @@
                 android:textColor="@color/colorOnPrimary"
                 android:textSize="16sp"
                 android:textStyle="bold"
-                android:visibility="gone"
                 app:layout_constraintBaseline_toBaselineOf="@+id/nameLabelView"
                 app:layout_constraintEnd_toStartOf="@+id/threesLabelView"
                 app:layout_constraintStart_toEndOf="@+id/onesLabelView" />
@@ -162,7 +159,6 @@
                 android:textColor="@color/colorOnPrimary"
                 android:textSize="16sp"
                 android:textStyle="bold"
-                android:visibility="gone"
                 app:layout_constraintBaseline_toBaselineOf="@+id/nameLabelView"
                 app:layout_constraintEnd_toStartOf="@+id/fivesLabelView"
                 app:layout_constraintStart_toEndOf="@+id/twosLabelView" />
@@ -178,7 +174,6 @@
                 android:textColor="@color/colorOnPrimary"
                 android:textSize="16sp"
                 android:textStyle="bold"
-                android:visibility="gone"
                 app:layout_constraintBaseline_toBaselineOf="@+id/nameLabelView"
                 app:layout_constraintEnd_toStartOf="@+id/missedLabelView"
                 app:layout_constraintStart_toEndOf="@+id/threesLabelView" />
@@ -194,7 +189,6 @@
                 android:textColor="@color/colorOnPrimary"
                 android:textSize="16sp"
                 android:textStyle="bold"
-                android:visibility="gone"
                 app:layout_constraintBaseline_toBaselineOf="@+id/nameLabelView"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/fivesLabelView" />
@@ -289,7 +283,6 @@
             android:layout_marginStart="3dp"
             android:layout_marginEnd="3dp"
             android:gravity="end"
-            android:visibility="gone"
             app:layout_constraintBaseline_toBaselineOf="@+id/nameTextView"
             app:layout_constraintEnd_toStartOf="@+id/onesTextView"
             app:layout_constraintStart_toEndOf="@+id/totalTextView" />
@@ -301,7 +294,6 @@
             android:layout_marginStart="3dp"
             android:layout_marginEnd="3dp"
             android:gravity="end"
-            android:visibility="gone"
             app:layout_constraintBaseline_toBaselineOf="@+id/nameTextView"
             app:layout_constraintEnd_toStartOf="@+id/twosTextView"
             app:layout_constraintStart_toEndOf="@+id/cleansTextView" />
@@ -313,7 +305,6 @@
             android:layout_marginStart="3dp"
             android:layout_marginEnd="3dp"
             android:gravity="end"
-            android:visibility="gone"
             app:layout_constraintBaseline_toBaselineOf="@+id/nameTextView"
             app:layout_constraintEnd_toStartOf="@+id/threesTextView"
             app:layout_constraintStart_toEndOf="@+id/onesTextView" />
@@ -325,7 +316,6 @@
             android:layout_marginStart="3dp"
             android:layout_marginEnd="3dp"
             android:gravity="end"
-            android:visibility="gone"
             app:layout_constraintBaseline_toBaselineOf="@+id/nameTextView"
             app:layout_constraintEnd_toEndOf="@+id/fivesTextView"
             app:layout_constraintStart_toEndOf="@+id/twosTextView" />
@@ -337,7 +327,6 @@
             android:layout_marginStart="3dp"
             android:layout_marginEnd="3dp"
             android:gravity="end"
-            android:visibility="gone"
             app:layout_constraintBaseline_toBaselineOf="@+id/nameTextView"
             app:layout_constraintEnd_toStartOf="@id/missedTextView"
             app:layout_constraintStart_toEndOf="@+id/threesTextView" />
@@ -349,7 +338,6 @@
             android:layout_marginStart="3dp"
             android:layout_marginEnd="12dp"
             android:gravity="end"
-            android:visibility="gone"
             app:layout_constraintBaseline_toBaselineOf="@+id/nameTextView"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/fivesTextView" />

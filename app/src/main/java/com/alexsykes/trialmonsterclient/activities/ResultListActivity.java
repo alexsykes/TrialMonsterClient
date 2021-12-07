@@ -1,10 +1,12 @@
 package com.alexsykes.trialmonsterclient.activities;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.pm.ActivityInfo;
+import android.content.res.Configuration;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -31,6 +33,7 @@ import java.util.Objects;
 
 public class ResultListActivity extends AppCompatActivity {
     private static final String BASE_URL = "https://android.trialmonster.uk/";
+    public static final String TAG = "Info";
 
     private String trialid;
     public static int numlaps, numsections;
@@ -43,10 +46,23 @@ public class ResultListActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_result_list);
-        this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
-
+       // this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+        Log.i(TAG, "onCreate: ");
         trialid = getIntent().getExtras().getString("trialid");
         getJSONDataset(BASE_URL + "getTrialResultJSONdata.php?id=" + trialid);
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        Log.i(TAG, "onStart: ");
+    }
+
+    @Override
+    public void onConfigurationChanged(@NonNull Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        Log.i(TAG, "onConfigurationChanged: ");
+        initialiseAdapter();
     }
 
     private void getJSONDataset(final String urlWebService) {

@@ -2,6 +2,7 @@ package com.alexsykes.trialmonsterclient.support;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -39,6 +40,7 @@ public class ResultListAdapter extends RecyclerView.Adapter<ResultListAdapter.Re
         // Point to data holder layout
         View v = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.result_list_item, viewGroup, false);
         ResultViewHolder resultViewHolder = new ResultViewHolder(v);
+        Log.i("Info", "onCreateViewHolder: ");
         return resultViewHolder;
     }
 
