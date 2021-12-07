@@ -1,23 +1,18 @@
 package com.alexsykes.trialmonsterclient.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.pm.ActivityInfo;
-import android.content.res.Configuration;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.alexsykes.trialmonsterclient.R;
 import com.alexsykes.trialmonsterclient.support.ResultListAdapter;
-import com.alexsykes.trialmonsterclient.viewmodels.ResultListViewModel;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -36,7 +31,6 @@ import java.util.Objects;
 
 public class ResultListActivity extends AppCompatActivity {
     private static final String BASE_URL = "https://android.trialmonster.uk/";
-    private ResultListViewModel model;
 
     private String trialid;
     public static int numlaps, numsections;
@@ -49,36 +43,11 @@ public class ResultListActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_result_list);
-        // this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+        this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
 
         trialid = getIntent().getExtras().getString("trialid");
-        model = new ViewModelProvider(this).get(ResultListViewModel.class);
-
-        final Observer<ArrayList<HashMap<String, String>>> resultObserver = new Observer<ArrayList<HashMap<String, String>>>() {
-            @Override
-            public void onChanged(ArrayList<HashMap<String, String>> hashMaps) {
-                Log.i("Info", "model changed");
-            }
-        };
-
-        model.getResults(trialid).observe(this, resultObserver);
-
-     //    getJSONDataset(BASE_URL + "getTrialResultJSONdata.php?id=" + trialid);
+        getJSONDataset(BASE_URL + "getTrialResultJSONdata.php?id=" + trialid);
     }
-
-    @Override
-    public void onConfigurationChanged(Configuration newConfig) {
-        super.onConfigurationChanged(newConfig);
-
-        Log.i("info", "onConfigurationChanged: ");
-        // Checks the orientation of the screen
-        if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {
-            Toast.makeText(this, "landscape", Toast.LENGTH_SHORT).show();
-        } else if (newConfig.orientation == Configuration.ORIENTATION_PORTRAIT){
-            Toast.makeText(this, "portrait", Toast.LENGTH_SHORT).show();
-        }
-    }
-
 
     private void getJSONDataset(final String urlWebService) {
         /*
