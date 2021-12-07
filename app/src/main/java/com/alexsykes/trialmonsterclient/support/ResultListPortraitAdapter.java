@@ -96,14 +96,7 @@ public class ResultListPortraitAdapter extends RecyclerView.Adapter<ResultListPo
         resultViewHolder.nameTextView.setText(theResult.get("name"));
         resultViewHolder.machineTextView.setText(theResult.get("machine"));
         resultViewHolder.totalTextView.setText(theResult.get("total"));
-        resultViewHolder.cleansTextView.setText(theResult.get("cleans"));
-        resultViewHolder.onesTextView.setText(theResult.get("ones"));
-        resultViewHolder.twosTextView.setText(theResult.get("twos"));
-        resultViewHolder.threesTextView.setText(theResult.get("threes"));
-        resultViewHolder.fivesTextView.setText(theResult.get("fives"));
-        resultViewHolder.missedTextView.setText(theResult.get("missed"));
         resultViewHolder.classTextView.setText(theClass);
-        resultViewHolder.scoresTextView.setText(theSections);
 
         // Check for missed sections
         // Display position if dnf = 0
@@ -111,10 +104,8 @@ public class ResultListPortraitAdapter extends RecyclerView.Adapter<ResultListPo
 
         if (theResult.get("dnf").equals("1")) {
             resultViewHolder.positionTextView.setText("");
+            resultViewHolder.totalTextView.setText("DNF");
         }
-
-        visibility = Integer.valueOf(theResult.get("visibility"));
-        resultViewHolder.scoresTextView.setVisibility(visibility);
     }
 
     @Override
@@ -139,14 +130,7 @@ public class ResultListPortraitAdapter extends RecyclerView.Adapter<ResultListPo
             nameTextView = itemView.findViewById(R.id.nameTextView);
             machineTextView = itemView.findViewById(R.id.machineTextView);
             totalTextView = itemView.findViewById(R.id.totalTextView);
-            cleansTextView = itemView.findViewById(R.id.cleansTextView);
-            onesTextView = itemView.findViewById(R.id.onesTextView);
-            twosTextView = itemView.findViewById(R.id.twosTextView);
-            threesTextView = itemView.findViewById(R.id.threesTextView);
-            fivesTextView = itemView.findViewById(R.id.fivesTextView);
-            missedTextView = itemView.findViewById(R.id.missedTextView);
             classTextView = itemView.findViewById(R.id.classTextView);
-            scoresTextView = itemView.findViewById(R.id.scoresTextView);
             courseTextView = itemView.findViewById(R.id.courseTextView);
             topRow = itemView.findViewById(R.id.topRow);
         }
