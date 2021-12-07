@@ -50,6 +50,26 @@ public class ResultListPortraitAdapter extends RecyclerView.Adapter<ResultListPo
         int numlaps = ResultListActivity.numlaps;
         int visibility;
 
+        // Pass index value to listener method
+        resultViewHolder.itemView.setTag(i);
+        resultViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int visible = resultViewHolder.detailRow.getVisibility();
+                int pointer = (int) v.getTag();
+                int newVisibility;
+
+                if (visible == View.GONE) {
+                    newVisibility = View.VISIBLE;
+                } else {
+                    newVisibility = View.GONE;
+                }
+                resultViewHolder.detailRow.setVisibility(newVisibility);
+                theResultList.get(pointer).put("visibility", Integer.toString(newVisibility));
+            }
+        });
+        //
+
         int backgroundColor = ContextCompat.getColor(resultViewHolder.itemView.getContext(), R.color.offWhite);
         int white = ContextCompat.getColor(resultViewHolder.itemView.getContext(), R.color.colorWhite);
 
@@ -91,12 +111,21 @@ public class ResultListPortraitAdapter extends RecyclerView.Adapter<ResultListPo
             theClass = "";
         }
 
+        resultViewHolder.detailRow.setVisibility(View.GONE);
         resultViewHolder.positionTextView.setText(theResult.get("position"));
         resultViewHolder.riderTextView.setText(theResult.get("rider"));
         resultViewHolder.nameTextView.setText(theResult.get("name"));
         resultViewHolder.machineTextView.setText(theResult.get("machine"));
         resultViewHolder.totalTextView.setText(theResult.get("total"));
+        resultViewHolder.summaryTotalTextView.setText(theResult.get("total"));
         resultViewHolder.classTextView.setText(theClass);
+        resultViewHolder.cleansTextView.setText(theResult.get("cleans"));
+        resultViewHolder.onesTextView.setText(theResult.get("ones"));
+        resultViewHolder.twosTextView.setText(theResult.get("twos"));
+        resultViewHolder.threesTextView.setText(theResult.get("threes"));
+        resultViewHolder.fivesTextView.setText(theResult.get("fives"));
+        resultViewHolder.missedTextView.setText(theResult.get("missed"));
+        resultViewHolder.sectionScoreTextView.setText(theSections);
 
         // Check for missed sections
         // Display position if dnf = 0
@@ -119,20 +148,34 @@ public class ResultListPortraitAdapter extends RecyclerView.Adapter<ResultListPo
     }
 
     public class ResultViewHolder extends RecyclerView.ViewHolder {
-        TextView positionTextView, riderTextView, machineTextView, totalTextView, nameTextView, cleansTextView, onesTextView, twosTextView, threesTextView, fivesTextView, missedTextView, courseTextView, classTextView, scoresTextView;
-        LinearLayout topRow;
+        TextView positionTextView, riderTextView, machineTextView, totalTextView, nameTextView,
+                summaryTotalTextView, cleansTextView, onesTextView, twosTextView, threesTextView, fivesTextView, missedTextView,
+                courseTextView, classTextView, scoresTextView, sectionScoreTextView;
+        LinearLayout topRow, detailRow, dataRow;
 
 
         public ResultViewHolder(@NonNull View itemView) {
             super(itemView);
+
+            courseTextView = itemView.findViewById(R.id.courseTextView);
+            topRow = itemView.findViewById(R.id.topRow);
+            detailRow = itemView.findViewById(R.id.detailRow);
+
             positionTextView = itemView.findViewById(R.id.positionTextView);
             riderTextView = itemView.findViewById(R.id.riderTextView);
             nameTextView = itemView.findViewById(R.id.nameTextView);
             machineTextView = itemView.findViewById(R.id.machineTextView);
             totalTextView = itemView.findViewById(R.id.totalTextView);
+            summaryTotalTextView = itemView.findViewById(R.id.summaryTotalTextView);
+            cleansTextView = itemView.findViewById(R.id.cleansTextView);
+            onesTextView = itemView.findViewById(R.id.onesTextView);
+            twosTextView = itemView.findViewById(R.id.twosTextView);
+            threesTextView = itemView.findViewById(R.id.threesTextView);
+            fivesTextView = itemView.findViewById(R.id.fivesTextView);
+            missedTextView = itemView.findViewById(R.id.missedTextView);
             classTextView = itemView.findViewById(R.id.classTextView);
-            courseTextView = itemView.findViewById(R.id.courseTextView);
-            topRow = itemView.findViewById(R.id.topRow);
+            scoresTextView = itemView.findViewById(R.id.scoresTextView);
+            sectionScoreTextView = itemView.findViewById(R.id.sectionScoreTextView);
         }
 
         public void bind(final HashMap<String, String> theScore, final OnItemClickListener listener) {

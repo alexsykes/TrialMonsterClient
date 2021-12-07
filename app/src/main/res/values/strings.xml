@@ -17,4 +17,6 @@
     <string name="message">Loading data…</string>
     <string name="list_of_trials">The screen displays a list of the trials available for display</string>
     <string name="list_of_results">This view shows a list of scores for one event</string>
+    <string name="sections_scores">|0000|0000|0000|1010|0000|0000|0000|1010|</string>
+    <string name="section_scores">Section scores</string>
 </resources>

@@ -116,6 +116,7 @@ public class ResultListAdapter extends RecyclerView.Adapter<ResultListAdapter.Re
         resultViewHolder.nameTextView.setText(theResult.get("name"));
         resultViewHolder.machineTextView.setText(theResult.get("machine"));
         resultViewHolder.totalTextView.setText(theResult.get("total"));
+        resultViewHolder.summaryTotalTextView.setText(theResult.get("total"));
         resultViewHolder.cleansTextView.setText(theResult.get("cleans"));
         resultViewHolder.onesTextView.setText(theResult.get("ones"));
         resultViewHolder.twosTextView.setText(theResult.get("twos"));
@@ -148,7 +149,7 @@ public class ResultListAdapter extends RecyclerView.Adapter<ResultListAdapter.Re
     }
 
     public class ResultViewHolder extends RecyclerView.ViewHolder {
-        TextView positionTextView, riderTextView, machineTextView, totalTextView, nameTextView, cleansTextView, onesTextView, twosTextView, threesTextView, fivesTextView, missedTextView, courseTextView, classTextView, scoresTextView;
+        TextView positionTextView, riderTextView, machineTextView, summaryTotalTextView, totalTextView, nameTextView, cleansTextView, onesTextView, twosTextView, threesTextView, fivesTextView, missedTextView, courseTextView, classTextView, scoresTextView;
         LinearLayout topRow;
 
 
