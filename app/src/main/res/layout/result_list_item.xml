@@ -27,321 +27,262 @@
             android:paddingBottom="8dp"
             android:textColor="@color/colorOnPrimary"
             android:textSize="18sp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="@id/nameTextView"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/labelRow"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/offWhite"
-            android:orientation="horizontal"
-            android:paddingBottom="4dp"
-            android:visibility="visible">
-
-            <TextView
-                android:id="@+id/nameLabelView"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="100dp"
-                android:layout_marginEnd="8dp"
-                android:text="@string/rider"
-                android:textAlignment="center"
-                android:textColor="@color/colorOnPrimary"
-                android:textSize="16sp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toStartOf="@+id/machineLabelView"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/machineLabelView"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginEnd="8dp"
-                android:text="@string/machine"
-                android:textAlignment="center"
-                android:textColor="@color/colorOnPrimary"
-                android:textSize="16sp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/classLabelView"
-                app:layout_constraintStart_toEndOf="@+id/nameLabelView" />
-
-            <TextView
-                android:id="@+id/classLabelView"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginEnd="8dp"
-                android:text="@string/riderclass"
-                android:textAlignment="center"
-                android:textColor="@color/colorOnPrimary"
-                android:textSize="16sp"
-                android:textStyle="bold"
-                app:layout_constraintBaseline_toBaselineOf="@+id/nameLabelView"
-                app:layout_constraintEnd_toStartOf="@+id/totalLabelView"
-                app:layout_constraintStart_toEndOf="@+id/machineLabelView" />
-
-            <TextView
-                android:id="@+id/totalLabelView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginEnd="8dp"
-                android:text="@string/total"
-                android:textColor="@color/colorOnPrimary"
-                android:textSize="16sp"
-                android:textStyle="bold"
-                app:layout_constraintBaseline_toBaselineOf="@+id/nameLabelView"
-                app:layout_constraintEnd_toStartOf="@+id/cleansLabelView"
-                app:layout_constraintStart_toEndOf="@+id/classLabelView"
-                tools:layout_conversion_absoluteHeight="24dp"
-                tools:layout_conversion_absoluteWidth="50dp" />
-
-            <TextView
-                android:id="@+id/cleansLabelView"
-                android:layout_width="20dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="3dp"
-                android:layout_marginEnd="3dp"
-                android:gravity="center_horizontal"
-                android:text="@string/cleans"
-                android:textColor="@color/colorOnPrimary"
-                android:textSize="16sp"
-                android:textStyle="bold"
-                app:layout_constraintBaseline_toBaselineOf="@+id/nameLabelView"
-                app:layout_constraintEnd_toStartOf="@+id/onesLabelView"
-                app:layout_constraintStart_toEndOf="@+id/totalLabelView"
-                tools:layout_conversion_absoluteHeight="24dp"
-                tools:layout_conversion_absoluteWidth="80dp" />
-
-            <TextView
-                android:id="@+id/onesLabelView"
-                android:layout_width="20dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="3dp"
-                android:layout_marginEnd="3dp"
-                android:gravity="center_horizontal"
-                android:text="@string/_1"
-                android:textColor="@color/colorOnPrimary"
-                android:textSize="16sp"
-                android:textStyle="bold"
-                app:layout_constraintBaseline_toBaselineOf="@+id/nameLabelView"
-                app:layout_constraintEnd_toStartOf="@+id/twosLabelView"
-                app:layout_constraintStart_toEndOf="@+id/cleansLabelView" />
-
-            <TextView
-                android:id="@+id/twosLabelView"
-                android:layout_width="20dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="3dp"
-                android:layout_marginEnd="3dp"
-                android:gravity="center_horizontal"
-                android:text="@string/_2"
-                android:textColor="@color/colorOnPrimary"
-                android:textSize="16sp"
-                android:textStyle="bold"
-                app:layout_constraintBaseline_toBaselineOf="@+id/nameLabelView"
-                app:layout_constraintEnd_toStartOf="@+id/threesLabelView"
-                app:layout_constraintStart_toEndOf="@+id/onesLabelView" />
-
-            <TextView
-                android:id="@+id/threesLabelView"
-                android:layout_width="20dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="3dp"
-                android:layout_marginEnd="3dp"
-                android:gravity="center_horizontal"
-                android:text="@string/_3"
-                android:textColor="@color/colorOnPrimary"
-                android:textSize="16sp"
-                android:textStyle="bold"
-                app:layout_constraintBaseline_toBaselineOf="@+id/nameLabelView"
-                app:layout_constraintEnd_toStartOf="@+id/fivesLabelView"
-                app:layout_constraintStart_toEndOf="@+id/twosLabelView" />
-
-            <TextView
-                android:id="@+id/fivesLabelView"
-                android:layout_width="20dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="3dp"
-                android:layout_marginEnd="3dp"
-                android:gravity="center_horizontal"
-                android:text="@string/_5"
-                android:textColor="@color/colorOnPrimary"
-                android:textSize="16sp"
-                android:textStyle="bold"
-                app:layout_constraintBaseline_toBaselineOf="@+id/nameLabelView"
-                app:layout_constraintEnd_toStartOf="@+id/missedLabelView"
-                app:layout_constraintStart_toEndOf="@+id/threesLabelView" />
-
-            <TextView
-                android:id="@+id/missedLabelView"
-                android:layout_width="20dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginEnd="20dp"
-                android:gravity="end"
-                android:text="@string/missed"
-                android:textColor="@color/colorOnPrimary"
-                android:textSize="16sp"
-                android:textStyle="bold"
-                app:layout_constraintBaseline_toBaselineOf="@+id/nameLabelView"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/fivesLabelView" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
+            android:textStyle="bold" />
     </LinearLayout>
 
 
-    <TextView
-        android:id="@+id/scoresTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="96dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/dataRow" />
-
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:id="@+id/dataRow"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
+        android:layout_marginStart="0dp"
         android:layout_marginEnd="8dp"
+        android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/topRow">
+        app:layout_constraintTop_toBottomOf="@id/topRow">
 
         <TextView
             android:id="@+id/positionTextView"
-            android:layout_width="30dp"
+            android:layout_width="24dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
             android:gravity="end"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@id/dataRow" />
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/riderTextView"
-            android:layout_width="30dp"
+            android:layout_width="24dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="4dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginBottom="4dp"
-            android:gravity="end"
-            app:layout_constraintBaseline_toBaselineOf="@+id/positionTextView"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/nameTextView"
-            app:layout_constraintStart_toEndOf="@id/positionTextView"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:layout_marginStart="4dp"
+            android:gravity="end" />
 
         <TextView
             android:id="@+id/nameTextView"
             android:layout_width="0dp"
+            android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            app:layout_constraintBaseline_toBaselineOf="@+id/riderTextView"
-            app:layout_constraintEnd_toStartOf="@+id/machineTextView"
-            app:layout_constraintStart_toEndOf="@+id/riderTextView" />
+            android:layout_marginStart="4dp" />
 
         <TextView
             android:id="@+id/machineTextView"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            app:layout_constraintBaseline_toBaselineOf="@+id/nameTextView"
-            app:layout_constraintEnd_toStartOf="@+id/classTextView"
-            app:layout_constraintStart_toEndOf="@+id/nameTextView" />
+            android:layout_weight="1"
+            android:gravity="start"
+            android:layout_height="wrap_content" />
 
         <TextView
             android:id="@+id/classTextView"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            app:layout_constraintBaseline_toBaselineOf="@+id/nameTextView"
-            app:layout_constraintEnd_toStartOf="@+id/totalTextView"
-            app:layout_constraintStart_toEndOf="@+id/machineTextView" />
+            android:layout_width="60dp"
+            android:gravity="start"
+            android:layout_height="wrap_content" />
 
         <TextView
             android:id="@+id/totalTextView"
             android:layout_width="30dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginEnd="16dp"
-            android:gravity="end"
-            app:layout_constraintBaseline_toBaselineOf="@+id/nameTextView"
-            app:layout_constraintEnd_toStartOf="@+id/cleansTextView"
-            app:layout_constraintStart_toEndOf="@+id/classTextView" />
+            android:textStyle="bold"
+            android:gravity="end" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/detailRow"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/dataRow"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/summaryLabelRow"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/summaryTotalLabel"
+                android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="36dp"
+                android:text="@string/total"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/cleansLabel"
+                android:layout_width="20dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="3dp"
+                android:layout_marginEnd="3dp"
+                android:text="@string/cleans"
+                android:textAlignment="center"
+                android:textStyle="bold"
+                app:layout_constraintBaseline_toBaselineOf="@+id/nameTextView"
+                app:layout_constraintEnd_toStartOf="@+id/onesTextView"
+                app:layout_constraintStart_toEndOf="@+id/totalTextView" />
+
+            <TextView
+                android:id="@+id/onesLabel"
+                android:layout_width="20dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="3dp"
+                android:layout_marginEnd="3dp"
+                android:text="@string/_1"
+                android:textAlignment="center"
+                android:textStyle="bold"
+                app:layout_constraintBaseline_toBaselineOf="@+id/nameTextView"
+                app:layout_constraintEnd_toStartOf="@+id/twosTextView"
+                app:layout_constraintStart_toEndOf="@+id/cleansTextView" />
+
+            <TextView
+                android:id="@+id/twosLabel"
+                android:layout_width="20dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="3dp"
+                android:layout_marginEnd="3dp"
+                android:text="@string/_2"
+                android:textAlignment="center"
+                android:textStyle="bold"
+                app:layout_constraintBaseline_toBaselineOf="@+id/nameTextView"
+                app:layout_constraintEnd_toStartOf="@+id/threesTextView"
+                app:layout_constraintStart_toEndOf="@+id/onesTextView" />
+
+            <TextView
+                android:id="@+id/threesLabel"
+                android:layout_width="20dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="3dp"
+                android:layout_marginEnd="3dp"
+                android:text="@string/_3"
+                android:textAlignment="center"
+                android:textStyle="bold"
+                app:layout_constraintBaseline_toBaselineOf="@+id/nameTextView"
+                app:layout_constraintEnd_toEndOf="@+id/fivesTextView"
+                app:layout_constraintStart_toEndOf="@+id/twosTextView" />
+
+            <TextView
+                android:id="@+id/fivesLabel"
+                android:layout_width="20dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="3dp"
+                android:layout_marginEnd="3dp"
+                android:text="@string/_5"
+                android:textAlignment="center"
+                android:textStyle="bold"
+                app:layout_constraintBaseline_toBaselineOf="@+id/nameTextView"
+                app:layout_constraintEnd_toStartOf="@id/missedTextView"
+                app:layout_constraintStart_toEndOf="@+id/threesTextView" />
+
+            <TextView
+                android:id="@+id/missedLabel"
+                android:layout_width="20dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="3dp"
+                android:layout_marginEnd="12dp"
+                android:text="@string/missed"
+                android:textAlignment="center"
+                android:textStyle="bold"
+                app:layout_constraintBaseline_toBaselineOf="@+id/nameTextView"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/fivesTextView" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/summaryRow"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:id="@+id/summaryTotalTextView"
+                android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="36dp"
+                android:gravity="end" />
+
+            <TextView
+                android:id="@+id/cleansTextView"
+                android:layout_width="20dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="3dp"
+                android:layout_marginEnd="3dp"
+                android:gravity="end"
+                app:layout_constraintBaseline_toBaselineOf="@+id/nameTextView"
+                app:layout_constraintEnd_toStartOf="@+id/onesTextView"
+                app:layout_constraintStart_toEndOf="@+id/totalTextView" />
+
+            <TextView
+                android:id="@+id/onesTextView"
+                android:layout_width="20dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="3dp"
+                android:layout_marginEnd="3dp"
+                android:gravity="end"
+                app:layout_constraintBaseline_toBaselineOf="@+id/nameTextView"
+                app:layout_constraintEnd_toStartOf="@+id/twosTextView"
+                app:layout_constraintStart_toEndOf="@+id/cleansTextView" />
+
+            <TextView
+                android:id="@+id/twosTextView"
+                android:layout_width="20dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="3dp"
+                android:layout_marginEnd="3dp"
+                android:gravity="end"
+                app:layout_constraintBaseline_toBaselineOf="@+id/nameTextView"
+                app:layout_constraintEnd_toStartOf="@+id/threesTextView"
+                app:layout_constraintStart_toEndOf="@+id/onesTextView" />
+
+            <TextView
+                android:id="@+id/threesTextView"
+                android:layout_width="20dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="3dp"
+                android:layout_marginEnd="3dp"
+                android:gravity="end"
+                app:layout_constraintBaseline_toBaselineOf="@+id/nameTextView"
+                app:layout_constraintEnd_toEndOf="@+id/fivesTextView"
+                app:layout_constraintStart_toEndOf="@+id/twosTextView" />
+
+            <TextView
+                android:id="@+id/fivesTextView"
+                android:layout_width="20dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="3dp"
+                android:layout_marginEnd="3dp"
+                android:gravity="end"
+                app:layout_constraintBaseline_toBaselineOf="@+id/nameTextView"
+                app:layout_constraintEnd_toStartOf="@id/missedTextView"
+                app:layout_constraintStart_toEndOf="@+id/threesTextView" />
+
+            <TextView
+                android:id="@+id/missedTextView"
+                android:layout_width="20dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="3dp"
+                android:layout_marginEnd="12dp"
+                android:gravity="end"
+                app:layout_constraintBaseline_toBaselineOf="@+id/nameTextView"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/fivesTextView" />
+
+        </LinearLayout>
 
         <TextView
-            android:id="@+id/cleansTextView"
-            android:layout_width="20dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="3dp"
-            android:layout_marginEnd="3dp"
-            android:gravity="end"
-            app:layout_constraintBaseline_toBaselineOf="@+id/nameTextView"
-            app:layout_constraintEnd_toStartOf="@+id/onesTextView"
-            app:layout_constraintStart_toEndOf="@+id/totalTextView" />
+            android:layout_marginTop="8dp"
+            android:layout_marginStart="36dp"
+            android:layout_marginEnd="36dp"
+            android:text="@string/section_scores"
+            android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/onesTextView"
-            android:layout_width="20dp"
+            android:id="@+id/sectionScoreTextView"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="3dp"
-            android:layout_marginEnd="3dp"
-            android:gravity="end"
-            app:layout_constraintBaseline_toBaselineOf="@+id/nameTextView"
-            app:layout_constraintEnd_toStartOf="@+id/twosTextView"
-            app:layout_constraintStart_toEndOf="@+id/cleansTextView" />
-
-        <TextView
-            android:id="@+id/twosTextView"
-            android:layout_width="20dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="3dp"
-            android:layout_marginEnd="3dp"
-            android:gravity="end"
-            app:layout_constraintBaseline_toBaselineOf="@+id/nameTextView"
-            app:layout_constraintEnd_toStartOf="@+id/threesTextView"
-            app:layout_constraintStart_toEndOf="@+id/onesTextView" />
-
-        <TextView
-            android:id="@+id/threesTextView"
-            android:layout_width="20dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="3dp"
-            android:layout_marginEnd="3dp"
-            android:gravity="end"
-            app:layout_constraintBaseline_toBaselineOf="@+id/nameTextView"
-            app:layout_constraintEnd_toEndOf="@+id/fivesTextView"
-            app:layout_constraintStart_toEndOf="@+id/twosTextView" />
-
-        <TextView
-            android:id="@+id/fivesTextView"
-            android:layout_width="20dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="3dp"
-            android:layout_marginEnd="3dp"
-            android:gravity="end"
-            app:layout_constraintBaseline_toBaselineOf="@+id/nameTextView"
-            app:layout_constraintEnd_toStartOf="@id/missedTextView"
-            app:layout_constraintStart_toEndOf="@+id/threesTextView" />
-
-        <TextView
-            android:id="@+id/missedTextView"
-            android:layout_width="20dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="3dp"
-            android:layout_marginEnd="12dp"
-            android:gravity="end"
-            app:layout_constraintBaseline_toBaselineOf="@+id/nameTextView"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/fivesTextView" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
+            android:layout_marginStart="36dp"
+            android:layout_marginEnd="36dp"
+            android:text="" />
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

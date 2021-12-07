@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -67,11 +68,18 @@ public class MainActivity extends AppCompatActivity {
          * String -> After completion it should return a string and it will be the json string
          * */
         class GetResults extends AsyncTask<Void, Void, String> {
+            ProgressDialog dialog;
 
+            //this method will be called before execution
+            //you can display a progress bar or something
+            //so that user can understand that he should wait
+            //as network operation may take some time
             @Override
             protected void onPreExecute() {
                 super.onPreExecute();
-
+                dialog = new ProgressDialog(MainActivity.this);
+                dialog.setMessage("Loading...");
+                dialog.show();
             }
 
             protected void onPostExecute(String s) {
@@ -88,7 +96,7 @@ public class MainActivity extends AppCompatActivity {
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-
+                dialog.dismiss();
             }
 
             //in this method we are fetching the json string

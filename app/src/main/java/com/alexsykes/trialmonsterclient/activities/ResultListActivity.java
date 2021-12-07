@@ -1,18 +1,20 @@
 package com.alexsykes.trialmonsterclient.activities;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.pm.ActivityInfo;
+import android.app.ProgressDialog;
+import android.content.res.Configuration;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.TextView;
 
 import com.alexsykes.trialmonsterclient.R;
 import com.alexsykes.trialmonsterclient.support.ResultListAdapter;
+import com.alexsykes.trialmonsterclient.support.ResultListPortraitAdapter;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -22,15 +24,13 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Objects;
 
 public class ResultListActivity extends AppCompatActivity {
     private static final String BASE_URL = "https://android.trialmonster.uk/";
+    public static final String TAG = "Info";
 
     private String trialid;
     public static int numlaps, numsections;
@@ -43,10 +43,23 @@ public class ResultListActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_result_list);
-        this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
-
+       // this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+        Log.i(TAG, "onCreate: ");
         trialid = getIntent().getExtras().getString("trialid");
         getJSONDataset(BASE_URL + "getTrialResultJSONdata.php?id=" + trialid);
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        Log.i(TAG, "onStart: ");
+    }
+
+    @Override
+    public void onConfigurationChanged(@NonNull Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        Log.i(TAG, "onConfigurationChanged: ");
+        initialiseAdapter();
     }
 
     private void getJSONDataset(final String urlWebService) {
@@ -60,6 +73,7 @@ public class ResultListActivity extends AppCompatActivity {
          * String -> After completion it should return a string and it will be the json string
          * */
         class GetData extends AsyncTask<Void, Void, String> {
+            ProgressDialog dialog;
 
             //this method will be called before execution
             //you can display a progress bar or something
@@ -68,6 +82,9 @@ public class ResultListActivity extends AppCompatActivity {
             @Override
             protected void onPreExecute() {
                 super.onPreExecute();
+                dialog = new ProgressDialog(ResultListActivity.this);
+                dialog.setMessage("Loading...");
+                dialog.show();
             }
 
             //this method will be called after execution
@@ -76,6 +93,7 @@ public class ResultListActivity extends AppCompatActivity {
             protected void onPostExecute(String s) {
                 super.onPostExecute(s);
                 processJSON(s);
+                dialog.dismiss();
             }
 
             private void processJSON(String json) {
@@ -159,8 +177,16 @@ public class ResultListActivity extends AppCompatActivity {
     }
 
     private void initialiseAdapter() {
-        ResultListAdapter adapter = new ResultListAdapter(theResults);
-        rv.setAdapter(adapter);
+        int orientation = this.getResources().getConfiguration().orientation;
+        if (orientation == Configuration.ORIENTATION_PORTRAIT) {
+            ResultListPortraitAdapter adapter = new ResultListPortraitAdapter(theResults);
+            rv.setAdapter(adapter);
+        } else {
+            ResultListAdapter adapter = new ResultListAdapter(theResults);
+            rv.setAdapter(adapter);
+        }
+
+
     }
 
     private ArrayList<HashMap<String, String>> getResultList(String json) throws JSONException {

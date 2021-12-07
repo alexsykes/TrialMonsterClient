@@ -15,6 +15,7 @@
         <activity
             android:name=".activities.ResultListActivity"
             android:parentActivityName=".activities.MainActivity"
+            android:configChanges="orientation|screenSize"
             android:exported="false" />
         <activity
             android:name=".activities.MainActivity"
