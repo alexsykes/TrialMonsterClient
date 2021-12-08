@@ -3,15 +3,19 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:elevation="@dimen/cardview_default_radius"
     android:paddingBottom="8dp">
 
     <LinearLayout
         android:id="@+id/topRow"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
         android:orientation="vertical"
         android:textSize="18sp"
         android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
@@ -24,18 +28,18 @@
             android:paddingEnd="30dp"
             android:paddingRight="30dp"
             android:paddingBottom="8dp"
-            android:textColor="@color/colorOnPrimary"
+            android:textColor="@color/colorWhite"
             android:textSize="18sp"
             android:textStyle="bold" />
     </LinearLayout>
 
-     <!-- dataRow -->
+    <!-- dataRow -->
     <LinearLayout
         android:id="@+id/dataRow"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
         android:layout_marginStart="0dp"
+        android:layout_marginTop="4dp"
         android:layout_marginEnd="8dp"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
@@ -59,39 +63,39 @@
         <TextView
             android:id="@+id/nameTextView"
             android:layout_width="0dp"
-            android:layout_weight="3"
             android:layout_height="wrap_content"
-            android:layout_marginStart="4dp" />
+            android:layout_marginStart="4dp"
+            android:layout_weight="3" />
 
         <TextView
             android:id="@+id/machineTextView"
             android:layout_width="0dp"
+            android:layout_height="wrap_content"
             android:layout_weight="2"
-            android:gravity="start"
-            android:layout_height="wrap_content" />
+            android:gravity="start" />
 
         <TextView
             android:id="@+id/classTextView"
             android:layout_width="60dp"
-            android:gravity="start"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:gravity="start" />
 
         <TextView
             android:id="@+id/totalTextView"
             android:layout_width="30dp"
             android:layout_height="wrap_content"
-            android:textStyle="bold"
-            android:gravity="end" />
+            android:gravity="end"
+            android:textStyle="bold" />
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/detailRow"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/dataRow"
-        app:layout_constraintStart_toStartOf="parent"
+        android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
-        android:orientation="vertical">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/dataRow">
 
         <LinearLayout
             android:id="@+id/summaryLabelRow"
@@ -273,8 +277,8 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
             android:layout_marginStart="36dp"
+            android:layout_marginTop="8dp"
             android:layout_marginEnd="36dp"
             android:text="@string/section_scores"
             android:textStyle="bold" />
